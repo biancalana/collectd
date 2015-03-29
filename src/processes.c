@@ -1616,7 +1616,8 @@ static int ps_read (void)
 	ps_list_reset ();
 
 	/* Open the kvm interface, get a descriptor */
-	kd = kvm_open (NULL, NULL, NULL, 0, errbuf);
+	kd = kvm_open(NULL, _PATH_DEVNULL, NULL, O_RDONLY, errbuf);
+	//kvm_open (NULL, NULL, NULL, 0, errbuf);
 	if (kd == NULL)
 	{
 		ERROR ("processes plugin: Cannot open kvm interface: %s",
